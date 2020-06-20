@@ -6,6 +6,8 @@ COPY package.json /server/
 
 WORKDIR /server/
 
+RUN apk add build-base linux-headers make python2
+
 RUN npm i
 
 ENTRYPOINT npm start
