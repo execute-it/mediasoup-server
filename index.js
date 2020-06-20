@@ -22,7 +22,15 @@ const mediaServer = mediasoup.Server({
   rtcMaxPort: config.mediasoup.rtcMaxPort
 });
 
-var videoProducer;
+const checkAuth = async (client, data, cb) => {
+  // TODO: Hardcoded token, check with main server later
+  if(data.token === 'abcd1234')
+    cb(null, {data})
+  else
+    cb(new Error('403'))
+}
+
+require('socketio-auth')(io, {authenticate: checkAuth})
 
 // Handle socket connection and its messages
 io.on('connection', (socket) => {
