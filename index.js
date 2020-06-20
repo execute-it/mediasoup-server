@@ -26,8 +26,9 @@ const checkAuth = async (client, data, cb) => {
   // TODO: Hardcoded token, check with main server later
   if(data.token === 'abcd1234')
     cb(null, {data})
-  else
-    cb(new Error('403'))
+  else {
+    cb(new Error('Unauthorized, Closing connection...'))
+  }
 }
 
 require('socketio-auth')(io, {authenticate: checkAuth})

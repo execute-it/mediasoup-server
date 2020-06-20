@@ -1,6 +1,8 @@
+
+
 module.exports = {
   server: {
-    port: 8000
+    port: process.env.SERVER_PORT || 8000
   },
   mediasoup: {
     // mediasoup Server settings.
@@ -15,9 +17,9 @@ module.exports = {
       'rbe',
       'rtx'
     ],
-    rtcIPv4: true,
+    rtcIPv4: process.env.RTC_IP || true,
     rtcIPv6: false,
-    rtcAnnouncedIPv4: 'classrooms.pratham.live',
+    rtcAnnouncedIPv4: process.env.RTC_ANNOUNCED_IP || null,
     rtcAnnouncedIPv6: null,
     rtcMinPort: 40000,
     rtcMaxPort: 49999,
